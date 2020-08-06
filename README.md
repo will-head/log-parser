@@ -10,6 +10,11 @@ Clone the repository and run the following command to install all the dependenci
 $ bundle install  
 ```
 
+You may need to change the permissions on `parser.rb` as follows:
+```bash
+chmod +x parser.rb
+```
+
 ## Testing
 
 To run RSpec (with coverage) followed by Rubocop run script:  
@@ -26,11 +31,26 @@ $ ./scripts/tdd.test [item_name]
 
 ## Feature Test
 
-As the exact output of the supplied `webserver.log` file is not known, the feature test runs using a smaller known set of data provided in `feature_test.log`.
+As the exact output of the supplied `webserver.log` file is not known, the feature test runs using a smaller known set of data provided in `data/feature_test.log`.
 
-All input data is stored in the `./data` directory.
+(All input data is stored in the `./data` directory.)
 
 The [feature test](./spec/features/log_parser_spec.rb) can be run using:
 ```bash
 rspec spec/features/log_parser_spec.rb
+```
+Based on the test data, the feature test expects the following output:
+
+```bash
+./parser.rb ./data/feature_test.log
+/home 8 visits
+/about/2 5 visits
+/contact 5 visits
+/about 2 visits
+
+./parser.rb --unique ./data/feature_test.log
+/home 6 unique views
+/contact 4 unique views
+/about 2 unique views
+/about/2 2 unique views
 ```
