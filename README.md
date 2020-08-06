@@ -30,7 +30,7 @@ As the exact output of the supplied `webserver.log` file is not known, the featu
 
 All input data is stored in the `./data` directory.
 
-The [feature test](.spec/features/log_parser_spec.rb) can be run using:
+The [feature test](./spec/features/log_parser_spec.rb) can be run using:
 ```bash
 rspec spec/features/log_parser_spec.rb
 ```
