@@ -1,12 +1,10 @@
 class LogParser
 
   def print_summary(arguments)
-    # plural = ""
+
     visit_list = process_log(arguments)
     format_summary(visit_list)
-    # if visit_count >= 2
-    #   plural = "s"
-    # end
+
   end
 
   private
@@ -22,10 +20,17 @@ class LogParser
   end
 
   def format_summary(visit_list)
+
     visit_count = Hash.new(0)
     visit_list.each { |entry| visit_count[entry] += 1 }
     visit_summary = ""
-    visit_count.each_pair { |path, visits| visit_summary += "#{path} #{visits} visit\n" }
+    visit_count.each_pair do |path, visits| 
+      plural = ""
+      if visits >= 2
+        plural = "s"
+      end
+      visit_summary += "#{path} #{visits} visit#{plural}\n"
+    end
     unique_summary = "/about 1 unique view\n"
     visit_summary + "\n" + unique_summary
   end
