@@ -26,19 +26,6 @@ class LogParser
     format_count(type, count)
   end
 
-  # def format_visit_summary(log)
-  #   visit_list = create_list(log)
-  #   visit_count = create_count(visit_list)
-  #   format_count('visit', visit_count)
-  # end
-
-  # def format_unique_summary(log)
-  #   log.uniq!
-  #   unique_list = create_list(log)
-  #   unique_count = create_count(unique_list)
-  #   format_count('unique view', unique_count)
-  # end
-
   def create_list(log)
     list = Array.new
     log.each { |line| list.push(line.keys[0].to_s) }
