@@ -19,6 +19,23 @@ class LogParser
 
   def format_summary(log)
 
+    # visit_list = Array.new
+    # log.each do |line|
+    #   visit_list.push(line.keys[0].to_s)
+    # end
+
+    # visit_count = Hash.new(0)
+    # visit_list.each { |entry| visit_count[entry] += 1 }
+    # visit_summary = format_visit_summary(visit_count)
+
+    visit_summary = format_visit_summary(log)
+    unique_summary = format_unique_summary(log)
+
+    visit_summary + "\n" + unique_summary
+  end
+
+  def format_visit_summary(log)
+
     visit_list = Array.new
     log.each do |line|
       visit_list.push(line.keys[0].to_s)
@@ -26,14 +43,8 @@ class LogParser
 
     visit_count = Hash.new(0)
     visit_list.each { |entry| visit_count[entry] += 1 }
-    visit_summary = format_visit_summary(visit_count)
+    # visit_summary = format_visit_summary(visit_count)
 
-    unique_summary = format_unique_summary(log)
-
-    visit_summary + "\n" + unique_summary
-  end
-
-  def format_visit_summary(visit_count)
     visit_summary = ""
     visit_count = visit_count.sort_by { |path, visits| [-visits, path] }.to_h
     visit_count.each_pair do |path, visits| 
