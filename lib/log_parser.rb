@@ -60,7 +60,7 @@ class LogParser
   end
 
   def format_plural(amount)
-    return amount >= 2 ? "s" : ""
+    amount >= 2 ? "s" : ""
   end
 
 end
