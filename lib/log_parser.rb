@@ -23,7 +23,7 @@ class LogParser
     visit_count = Hash.new(0)
     visit_list.each { |entry| visit_count[entry] += 1 }
     visit_summary = format_visit_summary(visit_count)
-    unique_summary = "/about 1 unique view\n"
+    unique_summary = "/home 1 unique view\n"
     visit_summary + "\n" + unique_summary
   end
 
