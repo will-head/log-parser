@@ -44,4 +44,8 @@ describe LogParser do
   it "#summary('./data/empty_log.log') returns Error: File 'no_log_file.log' has no entries" do
     expect(subject.summary('./data/empty_log.log')).to eq "Error: File './data/empty_log.log' has no entries"
   end
+
+  it "summary(nil) returns Usage: parser.rb logfile" do
+    expect(subject.summary(nil)).to eq "Usage: parser.rb logfile"
+  end
 end
