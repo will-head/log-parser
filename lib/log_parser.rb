@@ -26,9 +26,6 @@ class LogParser
 
   def format_visit_summary(log)
     visit_list = create_list(log)
-
-    # visit_count = Hash.new(0)
-    # visit_list.each { |entry| visit_count[entry] += 1 }
     visit_count = create_count(visit_list)
 
     visit_summary = ""
@@ -46,9 +43,6 @@ class LogParser
   def format_unique_summary(log)
     log.uniq!
     unique_list = create_list(log)
-
-    # unique_count = Hash.new(0)
-    # unique_list.each { |entry| unique_count[entry] += 1 }
     unique_count = create_count(unique_list)
 
     unique_summary = ""
