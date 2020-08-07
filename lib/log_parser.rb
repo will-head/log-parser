@@ -29,6 +29,7 @@ class LogParser
 
   def format_visit_summary(visit_count)
     visit_summary = ""
+    visit_count = visit_count.sort_by { |path, visits| [-visits, path] }.to_h
     visit_count.each_pair do |path, visits| 
       plural = ""
       if visits >= 2
