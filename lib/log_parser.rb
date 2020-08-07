@@ -4,6 +4,8 @@ class LogParser
     return "Error: File '#{logfile}' not found" unless File.exist?(logfile)
 
     log = process_log(logfile)
+    return "Error: File '#{logfile}' has no entries" if log.empty?
+     
     visit_summary = format_summary('visit', log)
     log.uniq!
     unique_summary = format_summary('unique view', log)

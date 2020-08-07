@@ -40,4 +40,8 @@ describe LogParser do
   it "#summary('no_log_file.log') returns Error: File 'no_log_file.log' not found" do
     expect(subject.summary('no_log_file.log')).to eq "Error: File 'no_log_file.log' not found"
   end
+
+  it "#summary('./data/empty_log.log') returns Error: File 'no_log_file.log' has no entries" do
+    expect(subject.summary('./data/empty_log.log')).to eq "Error: File './data/empty_log.log' has no entries"
+  end
 end
