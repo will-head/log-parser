@@ -31,13 +31,17 @@ class LogParser
     visit_summary = ""
     visit_count = visit_count.sort_by { |path, visits| [-visits, path] }.to_h
     visit_count.each_pair do |path, visits| 
-      plural = ""
-      if visits >= 2
-        plural = "s"
-      end
-      visit_summary += "#{path} #{visits} visit#{plural}\n"
+      visit_summary += format_visit_line(path, visits)
     end
     visit_summary
+  end
+
+  def format_visit_line(path, visits)
+    "#{path} #{visits} visit#{format_plural(visits)}\n"
+  end
+
+  def format_plural(amount)
+    return amount >= 2 ? "s" : ""
   end
 
 end
