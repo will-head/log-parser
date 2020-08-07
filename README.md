@@ -43,19 +43,19 @@ Based on the test data, the feature test expects the following output:
 
 ```bash
 ./parser.rb ./data/feature_test.log
-/home 8 visits
+/home 9 visits
 /about/2 5 visits
 /contact 5 visits
-/about 2 visits
+/about 1 visit
 
 /home 6 unique views
-/contact 4 unique views
-/about 2 unique views
+/contact 5 unique views
 /about/2 2 unique views
+/about 1 unique view
 ```
 
 ## Assumptions
 
-- Unless specified, the script prints both visits followed by unique views
-- Unless specified, sub-directories are considered separate entires
-- If two entires have the same count, they're listed in ascending order  
+- The script prints both visits followed by unique views
+- Sub-directories are considered separate entires
+- If two entries have the same count, they're listed in ascending order  
