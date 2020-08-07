@@ -2,7 +2,11 @@ class LogParser
 
   def print_summary(arguments)
     log = process_log(arguments)
-    format_summary(log)
+    # format_summary(log)
+    visit_summary = format_summary('visit', log)
+    log.uniq!
+    unique_summary = format_summary('unique view', log)
+    visit_summary + "\n" + unique_summary
   end
 
   private
@@ -17,12 +21,18 @@ class LogParser
     log
   end
 
-  def format_summary(log)
-    visit_summary = format_visit_summary(log)
-    unique_summary = format_unique_summary(log)
-
-    visit_summary + "\n" + unique_summary
+  def format_summary(type, log)
+    list = create_list(log)
+    count = create_count(list)
+    format_count(type, count)
   end
+
+  # def format_summary(log)
+  #   visit_summary = format_visit_summary(log)
+  #   unique_summary = format_unique_summary(log)
+
+  #   visit_summary + "\n" + unique_summary
+  # end
 
   def format_visit_summary(log)
     visit_list = create_list(log)
