@@ -41,8 +41,8 @@ describe LogParser do
     expect { subject.summary('no_log_file.log') }.to raise_error(LogParser::FileNotFound, "Error: File 'no_log_file.log' not found")
   end
 
-  it "#summary('./data/empty_log.log') returns Error: File 'no_log_file.log' has no entries" do
-    expect(subject.summary('./data/empty_log.log')).to eq "Error: File './data/empty_log.log' has no entries"
+  it "#summary('./data/empty_log.log') returns LogParser::FileEmpty with Error: File 'no_log_file.log' has no entries" do
+    expect { subject.summary('./data/empty_log.log') }.to raise_error(LogParser::FileEmpty, "Error: File './data/empty_log.log' has no entries")
   end
 
   it "summary(nil) returns Usage: parser.rb logfile" do
