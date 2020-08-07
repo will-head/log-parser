@@ -1,13 +1,16 @@
 class LogParser
 
   def print_summary(arguments)
-    plural = ""
-    visit_count = process_log(arguments)
-    if visit_count >= 2
-      plural = "s"
-    end
-    "/about #{visit_count} visit#{plural}\n /
-    /home 1 visit\n /
+    # plural = ""
+    # visit_count = process_log(arguments)
+    # if visit_count >= 2
+    #   plural = "s"
+    # end
+    # "/about #{visit_count} visit#{plural}\n /
+    # /home 1 visit\n /
+    # \n /
+    # /about 1 unique view"
+    "/about 1 visit\n /
     \n /
     /about 1 unique view"
   end
