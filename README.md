@@ -31,7 +31,7 @@ $ ./scripts/tdd.test [item_name]
 
 ## Feature Test
 
-As the exact output of the supplied `webserver.log` file is not known, the feature test runs using a smaller known set of data provided in `data/feature_test.log`.
+As the exact output of the supplied `webserver.log` file is not known, the feature test runs using a smaller known set of data provided in `./data/feature_test.log`.
 
 (All input data is stored in the `./data` directory.)
 
@@ -39,7 +39,32 @@ The [feature test](./spec/features/parser_spec.rb) can be run using:
 ```bash
 rspec spec/features/parser_spec.rb
 ```
-Based on the test data, the feature test expects the following output:
+Based on the [test data](./data/feature_test.log):
+
+```bash
+/about 061.945.150.735
+/about/2 184.123.665.067
+/about/2 184.123.665.067
+/about/2 444.701.448.104
+/about/2 444.701.448.104
+/about/2 444.701.448.104
+/contact 184.123.665.067
+/contact 316.433.849.805
+/contact 444.701.448.104
+/contact 543.910.244.929
+/contact 555.576.836.194
+/home 184.123.665.067
+/home 184.123.665.067
+/home 316.433.849.805
+/home 336.284.013.698
+/home 336.284.013.698
+/home 444.701.448.104
+/home 444.701.448.104
+/home 543.910.244.929
+/home 555.576.836.194
+```
+
+ The feature test expects the following output:
 
 ```bash
 ./parser.rb ./data/feature_test.log
@@ -59,3 +84,10 @@ Based on the test data, the feature test expects the following output:
 - The script prints both visits followed by unique views
 - Sub-directories are considered separate entires
 - If two entries have the same count, they're listed in ascending order  
+- IP addresses have leading zeros
+
+## Improvements
+
+- Validate log entries are correct
+- Provide option to specify path depth to be counted
+- Allow for IP addresses without leading zeros
