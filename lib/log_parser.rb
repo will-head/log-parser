@@ -1,7 +1,9 @@
 class LogParser
 
-  def summary(arguments)
-    log = process_log(arguments)
+  def summary(logfile)
+    return "Error: File '#{logfile}' not found" unless File.exist?(logfile)
+
+    log = process_log(logfile)
     visit_summary = format_summary('visit', log)
     log.uniq!
     unique_summary = format_summary('unique view', log)
