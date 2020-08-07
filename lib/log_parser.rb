@@ -25,16 +25,11 @@ class LogParser
   end
 
   def format_visit_summary(log)
-
-    # visit_list = Array.new
-    # log.each do |line|
-    #   visit_list.push(line.keys[0].to_s)
-    # end
-
     visit_list = create_list(log)
 
-    visit_count = Hash.new(0)
-    visit_list.each { |entry| visit_count[entry] += 1 }
+    # visit_count = Hash.new(0)
+    # visit_list.each { |entry| visit_count[entry] += 1 }
+    visit_count = create_count(visit_list)
 
     visit_summary = ""
     visit_count = visit_count.sort_by { |path, visits| [-visits, path] }.to_h
@@ -50,15 +45,11 @@ class LogParser
 
   def format_unique_summary(log)
     log.uniq!
-
-    # unique_list = Array.new
-    # log.each do |line|
-    #   unique_list.push(line.keys[0].to_s)
-    # end
     unique_list = create_list(log)
 
-    unique_count = Hash.new(0)
-    unique_list.each { |entry| unique_count[entry] += 1 }
+    # unique_count = Hash.new(0)
+    # unique_list.each { |entry| unique_count[entry] += 1 }
+    unique_count = create_count(unique_list)
 
     unique_summary = ""
     unique_count = unique_count.sort_by { |path, visits| [-visits, path] }.to_h
@@ -74,6 +65,12 @@ class LogParser
     list = Array.new
     log.each { |line| list.push(line.keys[0].to_s) }
     list
+  end
+
+  def create_count(list)
+    count = Hash.new(0)
+    list.each { |entry| count[entry] += 1 }
+    count
   end
 
   def format_plural(amount)
