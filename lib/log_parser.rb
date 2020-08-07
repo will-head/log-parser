@@ -1,7 +1,7 @@
 class LogParser
 
   def summary(logfile)
-    return "Usage: parser.rb logfile" if logfile.nil?
+    return "Usage: parser.rb logfile" if logfile.nil? || logfile.empty?
     return "Error: File '#{logfile}' not found" unless File.exist?(logfile)
 
     log = process_log(logfile)

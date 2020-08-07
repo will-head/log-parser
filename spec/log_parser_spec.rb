@@ -48,4 +48,8 @@ describe LogParser do
   it "summary(nil) returns Usage: parser.rb logfile" do
     expect(subject.summary(nil)).to eq "Usage: parser.rb logfile"
   end
+
+  it "summary('') returns Usage: parser.rb logfile" do
+    expect(subject.summary('')).to eq "Usage: parser.rb logfile"
+  end
 end
