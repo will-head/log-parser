@@ -1,8 +1,9 @@
 class LogParser
+  class FileNotFound < StandardError; end
 
   def summary(logfile)
     return "Usage: parser.rb logfile" if logfile.nil? || logfile.empty?
-    return "Error: File '#{logfile}' not found" unless File.exist?(logfile)
+    raise(FileNotFound, "Error: File '#{logfile}' not found") unless File.exist?(logfile)
 
     log = process_log(logfile)
     return "Error: File '#{logfile}' has no entries" if log.empty?
