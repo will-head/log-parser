@@ -3,4 +3,4 @@
 require_relative "lib/log_parser"
 
 parser = LogParser.new
-puts parser.print_summary(ARGV[0])
+puts parser.summary(ARGV[0])

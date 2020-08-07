@@ -1,6 +1,6 @@
 class LogParser
 
-  def print_summary(arguments)
+  def summary(arguments)
     log = process_log(arguments)
     visit_summary = format_summary('visit', log)
     log.uniq!
