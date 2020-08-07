@@ -14,7 +14,6 @@ class LogParser
       entry = line.split(' ')
       log.push({ entry[0] => entry[1] })
     end
-    
     log
   end
 
