@@ -26,10 +26,12 @@ class LogParser
 
   def format_visit_summary(log)
 
-    visit_list = Array.new
-    log.each do |line|
-      visit_list.push(line.keys[0].to_s)
-    end
+    # visit_list = Array.new
+    # log.each do |line|
+    #   visit_list.push(line.keys[0].to_s)
+    # end
+
+    visit_list = create_list(log)
 
     visit_count = Hash.new(0)
     visit_list.each { |entry| visit_count[entry] += 1 }
@@ -49,10 +51,11 @@ class LogParser
   def format_unique_summary(log)
     log.uniq!
 
-    unique_list = Array.new
-    log.each do |line|
-      unique_list.push(line.keys[0].to_s)
-    end
+    # unique_list = Array.new
+    # log.each do |line|
+    #   unique_list.push(line.keys[0].to_s)
+    # end
+    unique_list = create_list(log)
 
     unique_count = Hash.new(0)
     unique_list.each { |entry| unique_count[entry] += 1 }
@@ -65,6 +68,12 @@ class LogParser
     end
 
     unique_summary
+  end
+
+  def create_list(log)
+    list = Array.new
+    log.each { |line| list.push(line.keys[0].to_s) }
+    list
   end
 
   def format_plural(amount)
