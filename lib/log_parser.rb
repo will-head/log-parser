@@ -20,9 +20,14 @@ class LogParser
   end
 
   def format_summary(visit_list)
-
     visit_count = Hash.new(0)
     visit_list.each { |entry| visit_count[entry] += 1 }
+    visit_summary = format_visit_summary(visit_count)
+    unique_summary = "/about 1 unique view\n"
+    visit_summary + "\n" + unique_summary
+  end
+
+  def format_visit_summary(visit_count)
     visit_summary = ""
     visit_count.each_pair do |path, visits| 
       plural = ""
@@ -31,8 +36,7 @@ class LogParser
       end
       visit_summary += "#{path} #{visits} visit#{plural}\n"
     end
-    unique_summary = "/about 1 unique view\n"
-    visit_summary + "\n" + unique_summary
+    visit_summary
   end
 
 end
