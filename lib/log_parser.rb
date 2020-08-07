@@ -6,7 +6,10 @@ class LogParser
     if visit_count >= 2
       plural = "s"
     end
-    "/about #{visit_count} visit#{plural}\n\n/about 1 unique view"
+    "/about #{visit_count} visit#{plural}\n /
+    /home 1 visit\n /
+    \n /
+    /about 1 unique view"
   end
 
   private
