@@ -10,18 +10,13 @@ class LogParser
     log = process_log(logfile)
     raise(FileEmpty, "Error: File '#{logfile}' has no entries") if log.empty?
 
-    visit_summary = format_summary(:visit, log)
-    # log.uniq!
-    unique_summary = format_summary(:unique, log)
-    visit_summary + "\n" + unique_summary + "\n" 
+    format_summary(:visit, log) + format_summary(:unique, log)
   end
 
   private
 
   def format_summary(type, log)
-    if type == :unique
-      log.uniq!
-    end
+    log.uniq! if type == :unique
     list = create_list(log)
     count = create_count(list)
     format_count(type, count)
@@ -29,7 +24,6 @@ class LogParser
 
   def process_log(file)
     log = Array.new
-
     File.foreach(file) do |line| 
       entry = line.split(' ')
       log.push({ entry[0] => entry[1] })
@@ -51,15 +45,13 @@ class LogParser
 
   def format_count(type, count)
     label = type.to_s
-    if label == "unique"
-      label = "unique view"
-    end
+    label = "unique view" if label == "unique"
     summary = ""
     count = count.sort_by { |path, visits| [-visits, path] }.to_h
     count.each_pair do |path, visits| 
       summary += format_line(label, path, visits)
     end
-    summary
+    summary + "\n"
   end
 
   def format_line(label, path, visits)
@@ -69,5 +61,4 @@ class LogParser
   def format_plural(amount)
     amount >= 2 ? "s" : ""
   end
-
 end
