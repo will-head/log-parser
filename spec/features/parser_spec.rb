@@ -10,6 +10,7 @@ describe 'parser.rb' do
       /contact 5 unique views
       /about/2 2 unique views
       /about 1 unique view
+      
     LOG_SUMMARY
     ).to_stdout_from_any_process
   end

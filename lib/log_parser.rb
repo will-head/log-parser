@@ -13,7 +13,7 @@ class LogParser
     visit_summary = format_summary('visit', log)
     log.uniq!
     unique_summary = format_summary('unique view', log)
-    visit_summary + "\n" + unique_summary
+    visit_summary + "\n" + unique_summary + "\n" 
   end
 
   private
