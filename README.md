@@ -23,12 +23,6 @@ To run RSpec (with coverage) followed by Rubocop run script:
 $ ./scripts/tdd.test
 ```
 
-To test an individual item run:
-
-```bash
-$ ./scripts/tdd.test [item_name]
-```
-
 ## Feature Test
 
 As the exact output of the supplied `webserver.log` file is not known, the feature test runs using a smaller known set of data provided in `./data/feature_test.log`.
@@ -81,9 +75,9 @@ Based on the [test data](./data/feature_test.log):
 
 ## Assumptions
 
-- The script prints both visits followed by unique views
+- The script prints visits followed by unique views
 - Sub-directories are considered separate entires
-- If two entries have the same count, they're listed in ascending order  
+- If two entries have the same count, they're listed in alphabetical order  
 - IP addresses have leading zeros
 
 ## Improvements
@@ -91,3 +85,5 @@ Based on the [test data](./data/feature_test.log):
 - Validate log entries are correct
 - Provide option to specify path depth to be counted
 - Allow for IP addresses without leading zeros
+- Allow user to specify visist or unique views
+- Allow multiple log files as input
