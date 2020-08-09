@@ -18,6 +18,12 @@ class LogParser
 
   private
 
+  def format_summary(type, log)
+    list = create_list(log)
+    count = create_count(list)
+    format_count(type, count)
+  end
+
   def process_log(file)
     log = Array.new
 
@@ -26,12 +32,6 @@ class LogParser
       log.push({ entry[0] => entry[1] })
     end
     log
-  end
-
-  def format_summary(type, log)
-    list = create_list(log)
-    count = create_count(list)
-    format_count(type, count)
   end
 
   def create_list(log)
