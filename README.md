@@ -1,6 +1,6 @@
 # Log Parser
 
-The Log Parser takes a log file as input and returns a list of webpages, ordered by page views, and a list of webpages, ordered by unique views.
+The Log Parser takes a log file as input and returns a list of webpages, ordered by visits and by unique views.
 
 ## Setup
 
@@ -76,7 +76,7 @@ Based on the [test data](./data/feature_test.log):
 ## Assumptions
 
 - The script prints visits followed by unique views
-- Sub-directories are considered separate entires
+- Sub-directories are considered separate entries
 - If two entries have the same count, they're listed in alphabetical order  
 - IP addresses have leading zeros
 
@@ -85,5 +85,5 @@ Based on the [test data](./data/feature_test.log):
 - Validate log entries are correct
 - Provide option to specify path depth to be counted
 - Allow for IP addresses without leading zeros
-- Allow user to specify visist or unique views
+- Allow user to specify visits or unique views
 - Allow multiple log files as input
