@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/will-head/log-parser.svg?branch=main)](https://travis-ci.com/will-head/log-parser)
+
 # Log Parser
 
 The Log Parser takes a log file as input and returns a list of webpages, ordered by visits and by unique views.
